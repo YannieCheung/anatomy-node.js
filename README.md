@@ -99,6 +99,6 @@ myEmitter.emit('event');
 ```
 注意:如果在`newListener`的监听器中，注册了一个在`newListener`之外注册的同名事件，那么这个内部的监听器会插入到外部监听器的前面。如上面的例子会先打印内部监听器执行结果。
 
-###方法emitter.setMaxListeners(n)
+###方法emitter.setMaxListeners(n)/.getMaxListeners()和属性EventEmitter.defaultMaxListeners
 
 
