@@ -108,5 +108,6 @@ emitter.once('event', () => {
   emitter.setMaxListeners(Math.max(emitter.getMaxListeners() - 1, 0));
 });
 ```
-
+###其他
+`on()`有个别名`addListener()`
 
