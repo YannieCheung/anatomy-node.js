@@ -18,5 +18,7 @@ myEmitter.emit('event');
 3.当事件发生器调用`emit()`方法发生一个事件时，该事件上的监听器将会被调用
 4.`emit()`方法是依靠事件循环异步调用的
 
+除了`emit()`可以主动的触发事件外，很多情况下是被动的触发事件，如IO操作、接受web请求、读取一个stream等等。
+
 <a name='tick'></a>
 ![](/assets/tick流程图.png)
