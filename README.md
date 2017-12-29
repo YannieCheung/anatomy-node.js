@@ -62,6 +62,15 @@ myEmitter.emit('event');
 ```
 如果使用`once()`方法绑定事件，监听器只会在首次触发事件时执行一次
 ```javascript
+const myEmitter = new MyEmitter();
+let m = 0;
+myEmitter.once('event', () => {
+  console.log(++m);
+});
+myEmitter.emit('event');
+// Prints: 1
+myEmitter.emit('event');
+// Ignored
 ```
 
 
