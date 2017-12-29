@@ -109,5 +109,5 @@ emitter.once('event', () => {
 });
 ```
 ###其他
-*`on()`有个别名`addListener()`
++ `on()`有个别名`addListener()`
 
