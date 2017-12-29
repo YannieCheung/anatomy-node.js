@@ -47,6 +47,7 @@ myEmitter.on('event', (a, b) => {
 });
 myEmitter.emit('event', 'a', 'b');
 ```
+###只执行一次监听器的绑定方式
 
 
 
