@@ -102,3 +102,4 @@ myEmitter.emit('event');
 ###方法emitter.setMaxListeners(n)/.getMaxListeners()和属性EventEmitter.defaultMaxListeners
 
 
+
