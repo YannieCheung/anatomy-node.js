@@ -100,6 +100,13 @@ myEmitter.emit('event');
 注意:如果在`newListener`的监听器中，注册了一个在`newListener`之外注册的同名事件，那么这个内部的监听器会插入到外部监听器的前面。如上面的例子会先打印内部监听器执行结果。
 
 ###方法emitter.setMaxListeners(n)/.getMaxListeners()和属性EventEmitter.defaultMaxListeners
-
+Node.js默认为单个特定的事件上最多绑定10个监听器，可以通过`emitter.setMaxListeners(n)`方法为单个特定事件重新设置最大可绑定数量，如果n是一个负数，会抛出TypeError异常。`defaultMaxListeners`是全局所有特定事件最大可绑定的监听器数量，即10，要注意更改此值会影响到全局内所有的事件。不过`setMaxListeners(n)`的优先级高于`defaultMaxListeners`，即后者的改变不影响那些已经使用了前者的事件。
+```javascript
+emitter.setMaxListeners(emitter.getMaxListeners() + 1);
+emitter.once('event', () => {
+  // do stuff
+  emitter.setMaxListeners(Math.max(emitter.getMaxListeners() - 1, 0));
+});
+```
 
 
