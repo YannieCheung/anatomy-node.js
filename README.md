@@ -76,6 +76,7 @@ myEmitter.emit('event');
 
 ###事件newListener和removeListener
 `EventEmitter`的实例在一个监听器被添加进它的监听器队列时会触发`newListener`事件。
+在一个监听器被移除的时候会触发`removeListener`事件。
 而`newListener`自己的监听器会接收两个参数:event(被添加的监听器所对应的事件名称)和listener(被添加的监听器)
 ```javascript
 const myEmitter = new MyEmitter();
