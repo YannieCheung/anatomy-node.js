@@ -72,6 +72,7 @@ myEmitter.emit('event');
 myEmitter.emit('event');
 // Ignored
 ```
+`once()`可以巧妙的应用在<a href=''>解决雪崩的问题</a>上
 
 
 
