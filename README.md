@@ -110,4 +110,5 @@ emitter.once('event', () => {
 ```
 ###其他
 + `on()`有个别名`addListener()`
++ `emitter.emit('eventName'[,...args])`:该方法可以同时发生多个事件 
 
