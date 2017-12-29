@@ -74,6 +74,30 @@ myEmitter.emit('event');
 ```
 `once()`可以巧妙的应用在<a href='./li-yong-shi-jian-dui-lie-jie-jue-xue-beng-wen-ti.md?_k=nsvlxp'>解决雪崩的问题</a>上
 
+###事件newListener和removeListener
+`EventEmitter`的实例在一个监听器被添加进它的监听器队列时会触发`newListener`事件。
+而`newListener`自己的监听器会接收两个参数:event(被添加的监听器所对应的事件名称)和listener(被添加的监听器)
+```javascript
+const myEmitter = new MyEmitter();
+// Only do this once so we don't loop forever
+myEmitter.once('newListener', (event, listener) => {
+  if (event === 'event') {
+    // Insert a new listener in front
+    myEmitter.on('event', () => {
+      console.log('B');
+    });
+  }
+});
+myEmitter.on('event', () => {
+  console.log('A');
+});
+myEmitter.emit('event');
+// Prints:
+//   B
+//   A
+```
+注意:如果在`newListener`的监听器中，注册了一个在`newListener`之外注册的同名事件，那么这个内部的监听器会插入到外部监听器的前面。如上面的例子会先打印内部监听器执行结果。
+
 
 
 
