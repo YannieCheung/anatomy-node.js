@@ -48,6 +48,21 @@ myEmitter.on('event', (a, b) => {
 myEmitter.emit('event', 'a', 'b');
 ```
 ###只执行一次监听器的绑定方式
+使用`on()`方法绑定的事件，在每次调用`emit()`触发事件时，监听器都会执行。
+```javascript
+const myEmitter = new MyEmitter();
+let m = 0;
+myEmitter.on('event', () => {
+  console.log(++m);
+});
+myEmitter.emit('event');
+// Prints: 1
+myEmitter.emit('event');
+// Prints: 2
+```
+如果使用`once()`方法绑定事件，监听器只会在首次触发事件时执行一次
+```javascript
+```
 
 
 
