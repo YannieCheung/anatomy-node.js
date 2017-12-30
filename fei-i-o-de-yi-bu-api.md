@@ -25,3 +25,25 @@ process.nextTick = function(callback) {
     }
 }
 ```
+可以发现，每次调用`process.nextTick()`只会将回调函数放入队列，在下一次Tick时执行。
+
+看下面的代码
+```javascript
+setTimeout(function(){
+    console.log('setTimeout延迟执行');
+},0);
+setImmediate(function(){
+    console.log('setImmediate延迟执行');
+});
+process.nextTick(function(){
+    console.log('nextTick延迟执行');
+});
+
+console.log('正常执行');
+//打印
+//正常执行
+//nextTick延迟执行
+//setTimeout延迟执行
+//setImmediate延迟执行
+```
+根据输出，优先级从大到小为，`process.nextTick()`、`setTimeout(fn,0)`、`setImmediate()`，这是因为他们的观察者就不同，`EventLoop`对观察者的检查顺序是有先后的。
