@@ -76,7 +76,7 @@ myEmitter.emit('event');
 
 ###监听器队列的同步与异步
 `EventListener`同步地按照监听器注册的顺序去一个个调用它们，这样避免了资源的竞争或逻辑上的错误，还可以确保事件有正确的序列。而有时候，这种同步的监听器调用可以使用`setImmediate()`或者`process.nextTick()`切换成异步模式，关于这两个方法，可以参见
-<a href=''>非I/O的异步API</a>
+<a href='./asyn_no_io.md?_k=tgbf04'>非I/O的异步API</a>
 ```javascript
 const myEmitter = new MyEmitter();
 myEmitter.on('event', (a, b) => {
