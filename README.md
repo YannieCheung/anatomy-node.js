@@ -110,8 +110,9 @@ console.log(util.inspect(server.listeners('connection')));
 // Prints: [ [Function] ]
 ````
 
-###emitter.prependListener(eventName, listener)
+###emitter.prependListener(eventName, listener)/prependOnceListener(eventName, listener)
 `emitter.on()`是把监听器插入到注册队列尾部，此方法把监听器插入到队列首部
+`prependOnceListener()`则是与`once()`方法相对应，只执行一次
 ```javscript
 server.prependListener('connection', (stream) => {
   console.log('someone connected!');
