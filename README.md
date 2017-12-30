@@ -14,7 +14,7 @@ myEmitter.on('event', () => {
 myEmitter.emit('event');
 ```
 1.所有的事件发生器都是`EventEmitter`的实例
-2.每个事件发生器都有一个`on()`方法，用于把一个或多个监听器绑定在事件上
+2.每个事件发生器都有一个`on()`方法，用于把一个或多个监听器绑定在事件上(监听器队列，后来的插入队列尾部)
 3.当事件发生器调用`emit()`方法发生一个事件时，该事件上的监听器将会被调用
 4.`emit()`方法是依靠事件循环异步调用的
 
@@ -109,6 +109,8 @@ server.on('connection', (stream) => {
 console.log(util.inspect(server.listeners('connection')));
 // Prints: [ [Function] ]
 ````
+
+###emitter.prependListener(eventName, listener)
 
 ###方法emitter.setMaxListeners(n)/.getMaxListeners()和属性EventEmitter.defaultMaxListeners
 Node.js默认为单个特定的事件上最多绑定10个监听器，可以通过`emitter.setMaxListeners(n)`方法为单个特定事件重新设置最大可绑定数量，如果n是一个负数，会抛出TypeError异常。`defaultMaxListeners`是全局所有特定事件最大可绑定的监听器数量，即10，要注意更改此值会影响到全局内所有的事件。不过`setMaxListeners(n)`的优先级高于`defaultMaxListeners`，即后者的改变不影响那些已经使用了前者的事件。
