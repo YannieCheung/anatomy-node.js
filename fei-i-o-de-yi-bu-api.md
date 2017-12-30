@@ -48,7 +48,7 @@ console.log('正常执行');
 ```
 根据输出，优先级从大到小为，`process.nextTick()`、`setTimeout(fn,0)`、`setImmediate()`，这是因为他们的观察者就不同，`EventLoop`对观察者的检查顺序是有先后的。
 
-以上三个方法如果含有如下这种嵌套，那么执行顺序优先是到底是什么方法，然后才是内层外层。
+以上三个方法如果含有如下这种嵌套，那么执行顺序，方法的优先级高于内外层的优先级。
 ```javascript
 setTimeout(function(){
     console.log('setTimeout延迟执行');
