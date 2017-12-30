@@ -9,3 +9,19 @@
 ```javascript
 setTimeout(function(){},0);
 ```
+因为`setTimeout()`要动用到红黑树，较为浪费性能。
+而`process.nextTick()`和`setImmediate()`则较为轻量级，前者的代码如下:
+```javascript
+//process.nextTick()
+process.nextTick = function(callback) {
+    if(process._exiting) return;
+    if(tickDepth >= process.maxTickDepth)
+        maxTickWarn();
+    var tock = {callback:callback};
+    if(process.domain) tock.domain = process.domain;
+    nextTickQueue.push(tock);
+    if(nextTickQueue.length) {
+        process._needTickCallback();
+    }
+}
+```
