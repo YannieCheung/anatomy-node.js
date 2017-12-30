@@ -111,6 +111,12 @@ console.log(util.inspect(server.listeners('connection')));
 ````
 
 ###emitter.prependListener(eventName, listener)
+`emitter.on()`是把监听器插入到注册队列尾部，此方法把监听器插入到队列首部
+```javscript
+server.prependListener('connection', (stream) => {
+  console.log('someone connected!');
+});
+```
 
 ###方法emitter.setMaxListeners(n)/.getMaxListeners()和属性EventEmitter.defaultMaxListeners
 Node.js默认为单个特定的事件上最多绑定10个监听器，可以通过`emitter.setMaxListeners(n)`方法为单个特定事件重新设置最大可绑定数量，如果n是一个负数，会抛出TypeError异常。`defaultMaxListeners`是全局所有特定事件最大可绑定的监听器数量，即10，要注意更改此值会影响到全局内所有的事件。不过`setMaxListeners(n)`的优先级高于`defaultMaxListeners`，即后者的改变不影响那些已经使用了前者的事件。
