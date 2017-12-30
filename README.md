@@ -24,6 +24,7 @@ myEmitter.emit('event');
 ![](/assets/tick流程图.png)
 
 ###事件的错误处理
+未完工
 
 ###给监听器传递参数
 `EventEmitter`通过`emit()`触发事件时，可以向监听器中传递一组参数，监听器在执行时，其中的this指向`EventEmitter`实例。但是使用ES6的函数表达式定义监听器时，this不会指向`EventEmitter`实例
