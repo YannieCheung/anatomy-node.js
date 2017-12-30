@@ -118,7 +118,7 @@ server.prependListener('connection', (stream) => {
   console.log('someone connected!');
 });
 ```
-特别注意，如果在解除绑定时
+特别注意，事件一旦被`emit()`触发了，那么注册的所有监听器将会被调用，意思就是说这两个方法不会删除正在被调用的监听器。
 ```javsacript
 const myEmitter = new MyEmitter();
 
@@ -148,6 +148,7 @@ myEmitter.emit('event');
 // Prints:
 //   A
 ```
+这两个方法会改变监听器队列的索引，因此会影响到 `emitter.listeners()`方法。
 
 ###emitter.removeListener(eventName, listener)/removeAllListeners([eventName])
 `removeAllListeners()`将解除给定事件列表上所有的监听器绑定
