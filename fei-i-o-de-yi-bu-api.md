@@ -1,0 +1,1 @@
+###定时器setTimeout()和setInterval()
