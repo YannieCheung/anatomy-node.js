@@ -74,6 +74,18 @@ myEmitter.emit('event');
 ```
 `once()`可以巧妙的应用在<a href='./li-yong-shi-jian-dui-lie-jie-jue-xue-beng-wen-ti.md?_k=nsvlxp'>解决雪崩的问题</a>上
 
+###监听器队列的同步与异步
+`EventListener`同步地按照监听器注册的顺序去一个个调用它们，这样避免了资源的竞争或逻辑上的错误，还可以确保事件有正确的序列。而有时候，这种同步的监听器调用可以使用`setImmediate()`或者`process.nextTick()`切换成异步模式
+```javascript
+const myEmitter = new MyEmitter();
+myEmitter.on('event', (a, b) => {
+  setImmediate(() => {
+    console.log('this happens asynchronously');
+  });
+});
+myEmitter.emit('event', 'a', 'b');
+```
+
 ###事件newListener和removeListener
 `EventEmitter`的实例在一个监听器被添加进它的监听器队列时会触发`newListener`事件。
 在一个监听器被移除的时候会触发`removeListener`事件。
