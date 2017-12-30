@@ -123,7 +123,12 @@ server.prependListener('connection', (stream) => {
 `removeAllListeners()`将解除给定事件列表上所有的监听器绑定
 `removeListener()` 将解除指定事件列表上指定监听器的绑定，如果同一个监听器被绑定多次到同一个事件上，每次调用方法，只会解除一次绑定，如若要解除多次，就需要多次调用
 ```javsacript
-
+const callback = (stream) => {
+  console.log('someone connected!');
+};
+server.on('connection', callback);
+// ...
+server.removeListener('connection', callback);
 ```
 
 ###方法emitter.setMaxListeners(n)/.getMaxListeners()和属性EventEmitter.defaultMaxListeners
