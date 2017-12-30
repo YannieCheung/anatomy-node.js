@@ -118,6 +118,36 @@ server.prependListener('connection', (stream) => {
   console.log('someone connected!');
 });
 ```
+特别注意，如果在解除绑定时
+```javsacript
+const myEmitter = new MyEmitter();
+
+const callbackA = () => {
+  console.log('A');
+  myEmitter.removeListener('event', callbackB);
+};
+
+const callbackB = () => {
+  console.log('B');
+};
+
+myEmitter.on('event', callbackA);
+
+myEmitter.on('event', callbackB);
+
+// callbackA removes listener callbackB but it will still be called.
+// Internal listener array at time of emit [callbackA, callbackB]
+myEmitter.emit('event');
+// Prints:
+//   A
+//   B
+
+// callbackB is now removed.
+// Internal listener array [callbackA]
+myEmitter.emit('event');
+// Prints:
+//   A
+```
 
 ###emitter.removeListener(eventName, listener)/removeAllListeners([eventName])
 `removeAllListeners()`将解除给定事件列表上所有的监听器绑定
