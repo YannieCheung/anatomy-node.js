@@ -36,7 +36,7 @@ process.on('uncaughtException', (err) => {
 
 myEmitter.emit('error', new Error('whoops!'));
 ```
-而最佳实践是：无论如何，`error`事件上应该绑定一个监听器。
+_而最佳实践是：无论如何，`error`事件上应该绑定一个监听器。_
 ```javascript
 const myEmitter = new MyEmitter();
 myEmitter.on('error', (err) => {
