@@ -24,7 +24,28 @@ myEmitter.emit('event');
 ![](/assets/tick流程图.png)
 
 ###事件的错误处理
-未完工
+在`EventEmitter`的实例中发生一个错误时，一般都是触发一个`error`事件。
+如果`EventEmitter`上没有为`error`注册过监听器，那么当发生错误时，将抛出错误，打印异常，_并退出Node.js的进程_。
+为了防止Node的进程崩溃，可以在`process`对象的`uncaughtException`事件上注册一个监听器。
+```javascript
+const myEmitter = new MyEmitter();
+
+process.on('uncaughtException', (err) => {
+  console.error('whoops! there was an error');
+});
+
+myEmitter.emit('error', new Error('whoops!'));
+```
+而最佳实践是：无论如何，`error`事件上应该绑定一个监听器。
+```javascript
+const myEmitter = new MyEmitter();
+myEmitter.on('error', (err) => {
+  console.error('whoops! there was an error');
+});
+myEmitter.emit('error', new Error('whoops!'));
+// Prints: whoops! there was an error
+```
+
 
 ###给监听器传递参数
 `EventEmitter`通过`emit()`触发事件时，可以向监听器中传递一组参数，监听器在执行时，其中的this指向`EventEmitter`实例。但是使用ES6的函数表达式定义监听器时，this不会指向`EventEmitter`实例
