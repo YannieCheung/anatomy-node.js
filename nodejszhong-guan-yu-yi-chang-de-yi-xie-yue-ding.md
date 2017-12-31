@@ -24,6 +24,8 @@ try{
 Node.js的API中对异常的处理有以下的约定。将异常作为回调函数的第一个参数传回，在回调中判断，如果其为空值，表示没有异常抛出。
 ```javascript
 async(function(err, results){
-    //TODO
+    if(err) 
+        //有异常
+    //TODO 没有异常
 })
 ```
