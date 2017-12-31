@@ -89,6 +89,7 @@ myEmitter.on('event', (a, b) => {
 });
 myEmitter.emit('event', 'a', 'b');
 ```
+触发`event`事件时，会立即在`EventLoop`的下一个Tick执行，本来是需要排队的。
 
 ###事件newListener和removeListener
 `EventEmitter`的实例在一个监听器被添加进它的监听器队列时会触发`newListener`事件。
