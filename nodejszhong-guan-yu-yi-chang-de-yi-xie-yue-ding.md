@@ -33,3 +33,18 @@ async(function(err, results){
 而对于我们自己编写的异步方法，需要遵循以下两个原则：
 * 在方法的定义中，我们必须执行一次调用者传入的回调函数
 * 需要向Node自身API那样，为调用者传递会异常，供其作判断用
+```javascript
+var async = function(callback){
+    process.nextTick(function(){
+        var results = something;
+        if(error) {
+            return callback(error);
+        }
+        callback(null, results);
+    });
+};
+async(function(error,results){
+    if(err)
+        //有异常
+    //TODO 没有异常
+});
