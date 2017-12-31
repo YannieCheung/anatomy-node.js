@@ -87,6 +87,37 @@ var after = function(timer, callback){
 
 var done = after(times, render);
 ```
+以上不但解决了Node.js本身的问题，还可以发现在一个函数上关联了多个事件，这就是多对一。
+而`发布/订阅`的事件驱动模型，则是一个事件上注册多个回调函数，这是一对多。
+把这两种合并下，就是多对多的情况，如下:
+```javascript
+const EventEmitter = require('events');
+const emitter = new EventEmitter();
+
+var after = function(timer, callback){
+    var count = 0, results = {};
+    return function(key, value) {
+        results[key] = value;
+        count++;
+        if(count === times) {
+            callback(results);
+        }
+    }
+}
+var done = after(times,render);
+emitter.on("done",done);
+emitter.on("done",other);
+fs.readFile(template_path,"utf-8",function(err,template){
+    emitter.emit("done","template",template);
+});
+db.query(sql,function(err,data){
+    emitter.emit("done","data", data);
+});
+l10n.get(function(err,resources){
+    emitter.emit("done","resources",resources);
+});
+```
+
 
 
 
