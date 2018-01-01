@@ -118,7 +118,7 @@ l10n.get(function(err,resources){
 });
 ```
 
-根据以上的设计，整理整理，就变成了一个叫`EventProxy`的模块
+根据以上的设计，整理整理，就变成了一个叫<a href='./eventproxy.md?_k=hef4ey'>`EventProxy`</a>的模块
 
 
 

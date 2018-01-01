@@ -8,4 +8,5 @@
   * [多异步之间的协作](duo-yi-bu-zhi-jian-de-xie-zuo.md)
 * [Error](error.md)
   * [Node.js中关于异常的一些约定](nodejszhong-guan-yu-yi-chang-de-yi-xie-yue-ding.md)
+* [EventProxy](eventproxy.md)
 
