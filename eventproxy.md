@@ -11,3 +11,21 @@
 
 
 使用它之后的代码，是无嵌套并且并行的。
+```javascript
+var ep = EventProxy.create("template", "data", "l10n", function (template, data, l10n) {
+  _.template(template, data, l10n);
+});
+ 
+$.get("template", function (template) {
+  // something 
+  ep.emit("template", template);
+});
+$.get("data", function (data) {
+  // something 
+  ep.emit("data", data);
+});
+$.get("l10n", function (l10n) {
+  // something 
+  ep.emit("l10n", l10n);
+});
+```
