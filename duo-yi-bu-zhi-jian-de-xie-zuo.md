@@ -118,6 +118,8 @@ l10n.get(function(err,resources){
 });
 ```
 
+根据以上的设计，整理整理，就变成了一个叫`EventProxy`的模块
+
 
 
 
