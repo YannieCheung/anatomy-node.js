@@ -69,7 +69,22 @@ var ep = EventProxy.create('tpl', 'data', function (tpl, data) {
   // TODO 
 });
 ```
-
+###重复异步协作
+如下以读取目录下所有文件为例，在异步操作中，我们多次调用相同的操作后，再执行handler。
+此时便使用`after()`函数，handler的参数接受一个数组，按照多次触发事件的顺序，传入参数。
+```javascript
+var ep = new EventProxy();
+ep.after('got_file', files.length, function (list) {
+  // 在所有文件的异步执行结束后将被执行 
+  // 所有文件的内容都存在list数组中 
+});
+for (var i = 0; i < files.length; i++) {
+  fs.readFile(files[i], 'utf-8', function (err, content) {
+    // 触发结果事件 
+    ep.emit('got_file', content);
+  });
+}
+```
 
 
 
