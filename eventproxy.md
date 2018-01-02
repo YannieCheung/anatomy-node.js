@@ -107,6 +107,8 @@ setInterval(function () {
 }, 2000);
 ```
 
+#异常处理
+
 
 
 
