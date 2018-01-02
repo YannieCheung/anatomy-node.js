@@ -32,3 +32,4 @@ client.send(message, 0, message.length, 41234, "localhost", function(err, bytes)
     client.close();
 });
 ```
+当创建了客户端的UPD Socket后，就可以用它的`send()`方法向网络发送消息。
