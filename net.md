@@ -17,7 +17,7 @@
 
 
 
-####<span id='e_conn'>connection</span>
+####<span id='e_conn'>事件:connection</span>
     - [<net.Socket>](#socket) 连接对象
 当一个新的连接被使用时触发，`socket`是`net.Socket`的一个实例
 
