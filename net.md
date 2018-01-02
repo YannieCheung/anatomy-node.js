@@ -3,3 +3,5 @@
 
 ##Class:net.Server
 这个类用于创建TCP或者IPC服务端。
+
+####new net.Server([options][,connectionListener])
