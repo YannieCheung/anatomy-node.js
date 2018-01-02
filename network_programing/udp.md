@@ -20,5 +20,5 @@ server.on("listening", function(){
 
 server.bind(41234);
 ```
-以上代码，首先创建UPD的Socket，Socket一旦创建，即可作为客户端发送数据，也可以作为服务端接受数据。
+以上代码，首先创建UPD的Socket，Socket一旦创建，即可作为客户端发送数据，也可以作为服务端接受数据。之后在为创建的服务端上的两个事件`message`和`listening`注册handler。事件`message`在Socket侦听网卡端口后，接受到消息时触发，触发时会向handler传递两个参数，携带数据的Buffer对象和远程地址信息。事件`listening`在Socket绑定到网卡端口可以接受消息时触发。
 ###创建客户端
