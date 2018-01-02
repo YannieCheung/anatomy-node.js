@@ -58,3 +58,30 @@
     - pauseOnConnect
 * connectionListener `<Function>` 为[`connection`](#e_conn)事件注册一个监听器
 * 返回: `<net.Server>`
+
+下面是一个TCP服务端的例子，在8124端口监听连接。
+```javascript
+const net = require('net');
+const server = net.createServer((c) => {
+    console.log('客户端已连接');
+    c.on('end', () => {
+        console.log('客户端丢失连接');
+    };
+    c.write('hello\r\n');
+    c.pipe(c);
+};
+server.on('error', (err) => {
+    throw err;
+});
+server.listen(8124, () => {
+    console.log('服务端响应');
+});
+```
+
+
+
+
+
+
+
+
