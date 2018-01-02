@@ -32,4 +32,9 @@ client.send(message, 0, message.length, 41234, "localhost", function(err, bytes)
     client.close();
 });
 ```
-当创建了客户端的UPD Socket后，就可以用它的`send()`方法向网络发送消息。
+当创建了客户端的UPD Socket后，就可以用它的`send()`方法向网络发送消息。与TCP的`write()`方法相比，`send()`方法参数较为复杂，要传递发送的Buffer、Buffer的偏移量、Buffer的长度、目标端口、目标地址、发送完成后的回调。然而它可以随意的发送数据到网络中的服务端。而TCP发送给另一个服务端，就需要重新通过Socket构造一个新的连接。
+
+###事件
+除了以上的`listening`和`message`事件，还有以下两个事件：
+`close`: 调用close()方法时触发该事件。
+`error`:  当异常发生时触发，如果不监听，异常将直接抛出，使进程退出。
