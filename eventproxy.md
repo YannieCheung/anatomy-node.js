@@ -143,7 +143,24 @@ exports.getContent = function (callback) {
     });
 }
 ```
-
+可以发代码量比不处理异常前增加太多，因此进行如下优化
+```javascript
+exports.getContent = function (callback) {
+ var ep = new EventProxy();
+  ep.all('tpl', 'data', function (tpl, data) {
+    // 成功回调 
+    callback(null, {
+      template: tpl,
+      data: data
+    });
+  });
+  // 添加error handler 
+  ep.fail(callback);
+ 
+  fs.readFile('template.tpl', 'utf-8', ep.done('tpl'));
+  db.get('some sql', ep.done('data'));
+};
+```
 
 
 
