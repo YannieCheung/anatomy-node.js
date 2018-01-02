@@ -88,6 +88,24 @@ for (var i = 0; i < files.length; i++) {
 ```
 
 ###持续型异步协作
+在`all()`方法的使用中，当其中一个事件再次触发时，handler不会再次调用。
+而`tail()`方法，在指定事件触发后，如果事件之后会持续的触发，那么handler会在每次触发事件时持续的调用，像条尾巴那样。
+比如股票，数据和模板都是异步获取，视图会随着数据的刷新而刷新，如下
+```javascript
+var ep = new EventProxy();
+ep.tail('tpl', 'data', function (tpl, data) {
+  // 在所有指定的事件触发后，将会被调用执行 
+  // 参数对应各自的事件名的最新数据 
+});
+fs.readFile('template.tpl', 'utf-8', function (err, content) {
+  ep.emit('tpl', content);
+});
+setInterval(function () {
+  db.get('some sql', function (err, result) {
+    ep.emit('data', result);
+  });
+}, 2000);
+```
 
 
 
