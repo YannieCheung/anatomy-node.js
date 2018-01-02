@@ -57,3 +57,4 @@
     - allowHalfOpen
     - pauseOnConnect
 * connectionListener `<Function>` 为[`connection`](#e_conn)事件注册一个监听器
+* 返回: `<net.Server>`
