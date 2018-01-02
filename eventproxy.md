@@ -63,6 +63,12 @@ db.get('some sql', function (err, result) {
 });
 ```
 #####快速完成绑定
+以下方式等价于`all()`
+```javascript
+var ep = EventProxy.create('tpl', 'data', function (tpl, data) {
+  // TODO 
+});
+```
 
 
 
