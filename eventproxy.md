@@ -108,6 +108,7 @@ setInterval(function () {
 ```
 
 #异常处理
+在通常情况下我们都是像下面这样通过添加一个`error`事件来进行处理的
 
 ```javascript
 exports.getContent = function (callback) {
