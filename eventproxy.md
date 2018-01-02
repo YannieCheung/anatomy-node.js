@@ -97,7 +97,17 @@ for (var i = 0; i < files.length; i++) {
     fs.readFile(files[i], 'utf-8', ep.group('got_file'));
 }
 ```
-
+关于异常见下面的异常处理部分，`group()`也类似于下面的`done()`方法
+```javascript
+ep.group('got_file');
+// 约等价于 
+function (err, data) {
+  if (err) {
+    return ep.emit('error', err);
+  }
+  ep.emit('got_file', data);
+};
+```
 
 ###持续型异步协作
 在`all()`方法的使用中，当其中一个事件再次触发时，handler不会再次调用。
