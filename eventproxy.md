@@ -176,6 +176,18 @@ ep.bind('error', function (err) {
     callback(err);
 });
 ```
+`done()`方法返回一个函数的定义
+```javascript
+ep.done('tpl');
+// 等价于 
+function (err, content) {
+  if (err) {
+    // 一旦发生异常，一律交给error事件的handler处理 
+    return ep.emit('error', err);
+  }
+  ep.emit('tpl', content);
+}
+```
 
 
 
