@@ -109,7 +109,39 @@ setInterval(function () {
 
 #异常处理
 
-
+```javascript
+exports.getContent = function (callback) {
+    var ep = new EventProxy();
+    ep.all('tpl', 'data', function () {
+        // 成功回调 
+        callback(null, {
+            template: tpl,
+            data: data
+        });
+    });
+    //侦听error事件
+    ep.bind('error', function (err) {
+        // 卸载掉所有handler 
+        ep.unbind();
+        // 异常回调 
+        callback(err);
+    });
+    fs.readFile('template.tpl', 'utf-8', function (err, content) {
+        if (err) {
+            // 一旦发生异常，一律交给error事件的handler处理 
+            return ep.emit('error', err);
+        }
+        ep.emit('tpl', content);
+    });
+    db.get('some sql', function (err, result) {
+        if (err) {
+            // 一旦发生异常，一律交给error事件的handler处理 
+            return ep.emit('error', err);
+        }
+        ep.emit('data', result);
+    });
+}
+```
 
 
 
