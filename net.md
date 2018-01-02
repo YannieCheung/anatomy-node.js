@@ -26,7 +26,7 @@
 在调用[server.listen()](#listen)后，服务器开始响应时触发。
 
 ####<span id='listen'>server.listen()</span>
-为一个连接开启一个服务端监听，一个`net.Server`到底是TCP还是IPC的服务，取决于它监听的是什么
+为一个连接开启服务端监听，一个`net.Server`到底是TCP还是IPC的服务，取决于它监听的是什么。
 这个方法是异步调用的。当服务器开始监听时，[listening](#e_listening)事件被触发。该方法的最后一个参数是注册在[listening](#e_listening)事件上的监听器。
 
 
