@@ -20,4 +20,5 @@ server.on("listening", function(){
 
 server.bind(41234);
 ```
+以上代码，首先创建UPD的Socket，Socket一旦创建，即可作为客户端发送数据，也可以作为服务端接受数据。
 ###创建客户端
