@@ -86,7 +86,7 @@ for (var i = 0; i < files.length; i++) {
   });
 }
 ```
-在after的回调函数中，结果顺序是与用户emit的顺序有关。为了满足返回数据按发起异步调用的顺序排列，EventProxy提供了group方法。
+在after的回调函数中，结果顺序是与用户emit的顺序有关。为了满足返回数据按发起异步调用的顺序排列，EventProxy提供了`group()`方法。
 ```javascript
 var ep = new EventProxy();
 ep.after('got_file', files.length, function (list) {
