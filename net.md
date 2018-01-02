@@ -27,7 +27,9 @@
 
 ####<span id='listen'>server.listen()</span>
 为一个连接开启服务端监听，一个`net.Server`到底是TCP还是IPC的服务，取决于它监听的是什么。
+
 这个方法是异步调用的。当服务器开始监听时，[`listening`](#e_listening)事件被触发。该方法的最后一个参数是注册在[`listening`](#e_listening)事件上的监听器。
+
 所有形式的`listen()`方法都可以设置一个`backlog`参数，该参数指定连接等待队列的最大长度，实际的长度取决于操作系统的设置，比如Linux上的`tcp_max_syn_backlog`和`somaxconn`。默认值为511。
 
 
