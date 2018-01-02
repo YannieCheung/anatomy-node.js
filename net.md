@@ -18,10 +18,16 @@
 
 
 ####<span id='e_conn'>事件:connection</span>
-    - [<net.Socket>](#socket) 连接对象
+    - [`<net.Socket>`](#socket) 连接对象
+    
 当一个新的连接被使用时触发，`socket`是`net.Socket`的一个实例
 
+####<span id='e_listening'>事件:listening</span>
+在调用[server.listen()](#listen)后，服务器开始响应时触发。
 
+####<span id='listen'>server.listen()</span>
+为一个连接开启一个服务端监听，一个`net.Server`到底是TCP还是IPC的服务，取决于它监听的是什么
+这个方法是异步调用的。
 
 
 
