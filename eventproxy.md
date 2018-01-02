@@ -9,7 +9,21 @@
 * 兼容CMD，AMD以及CommonJS模块环境
 
 使用它之前的代码，是深度嵌套并且串行的。
-
+```javascript
+var render = function (template, data) {
+  _.template(template, data);
+};
+$.get("template", function (template) {
+  // something 
+  $.get("data", function (data) {
+    // something 
+    $.get("l10n", function (l10n) {
+      // something 
+      render(template, data, l10n);
+    });
+  });
+});
+```
 
 使用它之后的代码，是无嵌套并且并行的。
 ```javascript
