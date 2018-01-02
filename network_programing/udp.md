@@ -2,5 +2,22 @@
 在TCP中客户端如果要与不同的TCP服务通信，需要创建不同的Socket来完成连接。而在UDP中，一个Socket可以与多个UDP服务通信。但是UDP的信息传输是不可靠的，在网络差的情况下存在严重的丢包问题，但由于它无须重新连接，资源消耗低，处理快速且灵活，因此经常用于那种偶尔丢一两个数据包也不会产生重大影响的场景，如音频、视频等。DNS服务也是基于它实现的。
 
 ###创建服务端
+以下为一个完整服务端示例
+```javascript
+const dgram = require('dgram');
 
+const server = dgram.createSocket('udp4');
+
+server.on("message", function(msg, rinfo){
+    console.log("server got: " + msg + " from " + 
+        rinfo.address + ":" + rinfo.port);
+});
+
+server.on("listening", function(){
+    var address = server.address();
+    console.log("server listening " + address.address + ":" + address.port);
+});
+
+server.bind(41234);
+```
 ###创建客户端
