@@ -188,7 +188,13 @@ function (err, content) {
   ep.emit('tpl', content);
 }
 ```
-
+`throw()`也是个简写
+```javascript
+var err = new Error();
+ep.throw(err);
+// 实际是 
+ep.emit('error', err);
+```
 
 
 
