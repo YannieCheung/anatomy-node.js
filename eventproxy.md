@@ -62,7 +62,7 @@ db.get('some sql', function (err, result) {
   ep.emit('data', result);
 });
 ```
-
+#####快速完成绑定
 
 
 
