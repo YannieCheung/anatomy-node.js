@@ -176,7 +176,7 @@ ep.bind('error', function (err) {
     callback(err);
 });
 ```
-`done()`方法返回一个函数的定义
+`done()`方法返回一个函数的定义，因为`Events`的异常处理的最佳实践中，handler的第一个参数必定是个`error`对象。检查到异常后，将会触发`error`事件。剩下的参数，将触发事件，传递给对应的handler处理。
 ```javascript
 ep.done('tpl');
 // 等价于 
