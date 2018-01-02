@@ -1,3 +1,4 @@
+`EventProxy`的基础参见<a href='./event_proxy_base.md?_k=j2nxv3'>多异步协作</a>
 `EventPorxy`可以给事件编程带来以下几点思维上的变化。
 
 * 利用事件机制解耦复杂业务逻辑
