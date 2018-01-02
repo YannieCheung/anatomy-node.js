@@ -86,6 +86,18 @@ for (var i = 0; i < files.length; i++) {
   });
 }
 ```
+在after的回调函数中，结果顺序是与用户emit的顺序有关。为了满足返回数据按发起异步调用的顺序排列，EventProxy提供了group方法。
+```javascript
+var ep = new EventProxy();
+ep.after('got_file', files.length, function (list) {
+    // 在所有文件的异步执行结束后将被执行 
+    // 所有文件的内容都存在list数组中，按顺序排列 
+});
+for (var i = 0; i < files.length; i++) {
+    fs.readFile(files[i], 'utf-8', ep.group('got_file'));
+}
+```
+
 
 ###持续型异步协作
 在`all()`方法的使用中，当其中一个事件再次触发时，handler不会再次调用。
