@@ -48,7 +48,7 @@ $.get("l10n", function (l10n) {
 #异步协作
 ###多类型异步协作
 如下以渲染页面为例，渲染页面需要模板、数据。假定模板和数据的读取都需要作异步操作。
-`all()`方法将一个监听器(handler)注册到`tpl`和`data`的事件组合上。
+`all()`方法将一个监听器(handler)注册到`tpl`和`data`的事件组合上。当`tpl`和`data`事件都触发后，每个事件传递的参数将会依照`all()`方法的(事件名)参数顺序，传入监听器作为参数，之后执行监听器。
 ```javascript
 var ep = new EventProxy();
 ep.all('tpl', 'data', function (tpl, data) { // or ep.all(['tpl', 'data'], function (tpl, data) {}) 
