@@ -143,7 +143,7 @@ exports.getContent = function (callback) {
     });
 }
 ```
-可以发代码量比不处理异常前增加太多，因此进行如下优化
+可以发代码量比不处理异常前增加太多，因此通过`fial()`/`throw()`/`done()`等方法进行如下优化
 ```javascript
 exports.getContent = function (callback) {
  var ep = new EventProxy();
