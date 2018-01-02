@@ -47,3 +47,28 @@ $.get("l10n", function (l10n) {
 
 #异步协作
 ###多类型异步协作
+
+```javascript
+var ep = new EventProxy();
+ep.all('tpl', 'data', function (tpl, data) { // or ep.all(['tpl', 'data'], function (tpl, data) {}) 
+  // 在所有指定的事件触发后，将会被调用执行 
+  // 参数对应各自的事件名 
+});
+fs.readFile('template.tpl', 'utf-8', function (err, content) {
+  ep.emit('tpl', content);
+});
+db.get('some sql', function (err, result) {
+  ep.emit('data', result);
+});
+```
+
+
+
+
+
+
+
+
+
+
+
