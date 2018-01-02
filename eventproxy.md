@@ -161,7 +161,21 @@ exports.getContent = function (callback) {
   db.get('some sql', ep.done('data'));
 };
 ```
-
+`fail()`方法侦听了error事件，默认处理卸载掉所有handler，并调用异常回调函数。
+```javascript
+ep.fail(callback);
+// 由于参数位相同，它实际是 
+ep.fail(function (err) {
+    callback(err);
+});
+// 等价于 
+ep.bind('error', function (err) {
+    // 卸载掉所有handler 
+    ep.unbind();
+    // 异常回调 
+    callback(err);
+});
+```
 
 
 
