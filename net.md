@@ -56,4 +56,4 @@
 * options
     - allowHalfOpen
     - pauseOnConnect
-* connectionListener <Function> 为'connection'
+* connectionListener <Function> 为`connection`事件注册一个监听器
