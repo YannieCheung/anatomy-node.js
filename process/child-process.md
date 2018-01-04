@@ -15,3 +15,12 @@ n.on('message', (m) => {
 // Causes the child to print: CHILD got message: { hello: 'world' }
 n.send({ hello: 'world' });
 ```
+而在子进程脚本中有:
+```javascript
+process.on('message', (m) => {
+  console.log('CHILD got message:', m);
+});
+
+// Causes the parent to print: PARENT got message: { foo: 'bar', baz: null }
+process.send({ foo: 'bar', baz: NaN });
+```
