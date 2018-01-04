@@ -6,6 +6,7 @@
 侦听器上绑定以下参数:
 * message `<Object>` 一个JSON对象或者原生类型的值
 * sendHandle `<Handle object>` 一个[`net.Socket`]()或[`net.Server`]()对象或为undifined
+
 _注意:通信时消息会进行序列化和反序列化，接收的消息可能与最初的消息不太一样。_
 
 
