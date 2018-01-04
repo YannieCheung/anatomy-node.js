@@ -10,3 +10,17 @@
     - sys
     - idle
     - irq
+其中一个core如下面示例
+```
+{
+    model: 'Intel(R) Core(TM) i7-4600U CPU @ 2.10GHz',
+    speed: 2693,
+    times:{
+        user: 10110175,
+        nice: 0,
+        sys: 6049484,
+        idle: 166312775,
+        irq: 50825
+    }
+}
+```
