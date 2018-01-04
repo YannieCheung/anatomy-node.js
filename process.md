@@ -1,5 +1,9 @@
 ###Process Events
 `process`对象是<a href='./README.md?_k=ezo0xe'>`EventEmitter`</a>类的一个实例
+####事件:message
+
+
+
 ###process.send(message[,sendHandle[,options]][,callback])
 massage `<object>` 发送的消息为一个对象
 
