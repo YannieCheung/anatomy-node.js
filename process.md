@@ -1,7 +1,7 @@
 ###Process Events
 `process`对象是<a href='./README.md?_k=ezo0xe'>`EventEmitter`</a>类的一个实例
 ####事件:message
-如果Node.js进程是由IPC创建的(查看[Child Process]()和[Cluster]()文档)，在父进程中使用子进程对象的[`childprocess.send()`]()方法发送消息时，在子进程中就会触发`message`事件。
+如果Node.js进程是由IPC创建的(查看[Child Process](./process/child-process.md)和[Cluster]()文档)，在父进程中使用子进程对象的[`childprocess.send()`]()方法发送消息时，在子进程中就会触发`message`事件。
 
 侦听器上绑定以下参数:
 * message `<Object>` 一个JSON对象或者原生类型的值
