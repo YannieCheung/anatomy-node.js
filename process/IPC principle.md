@@ -1,0 +1,1 @@
+IPC即进程间通信(Inter-Process Communication)，为的是让不同进程能够互相访问资源并协调工作。实现IPC的方式由命名管道、匿名管道、socket、信号量、共享内存、消息队列、Domain Socket等。Node中实现IPC通道的是管道技术。在Node中管道是一个抽象的称呼，具体实现细节由libuv提供，windows下由命名管道实现，*nix系统由Domain Socket实现。表现在应用层上的IPC只有`message`事件和`send()`方法。下图为IPC创建和实现的示意图。
