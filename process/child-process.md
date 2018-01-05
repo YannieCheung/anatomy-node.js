@@ -25,3 +25,5 @@ process.on('message', (m) => {
 process.send({ foo: 'bar', baz: NaN });
 ```
 这里有个特殊情况，当父进程发送的消息为`cmd`属性，值前缀为`NODE_`时，子进程不会触发`process.on('message')`事件，因为这是留给Node.js内核用的。但是，这种类型的消息可以触发留作Node.js内部使用的`process.on('internalMessage')`事件。因此，在程序中应该避免使用此类消息或者在子进程中监听`internalMessage`事件。
+
+参数`sendHandles`可以向子进程传递一个TCP-server/sockot对象。
