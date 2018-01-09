@@ -8,4 +8,4 @@
 const net = require('net');
 ```
 ##IPC Support
-`net`模块支持[IPC](./process/IPC principle.md)(进程间通信)
+`net`模块支持[IPC](./../process/IPC principle.md)(进程间通信)
