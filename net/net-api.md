@@ -55,6 +55,7 @@ server.listen(() => {
 
 ###server.close([callback])
 * 返回 `<net.Server>`
+
 阻止服务器接收新的连接并维持已存在的连接。该方法是异步的，当所有连接结束后服务器最终将关闭并触发`close`事件，参数`callback`函数将在`close`触发时调用。
 _如果服务器还没打开就关闭，那么该回调将直接被调用。_
 
