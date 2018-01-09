@@ -60,6 +60,8 @@ server.listen(() => {
 _如果服务器还没打开就关闭，那么该回调将直接被调用。_
 
 ###server.getConnections(callback)
+* 返回 `<net.Server>`
+
 
 
 
