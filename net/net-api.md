@@ -27,5 +27,5 @@ const net = require('net');
 ###Event:'connection'
 当客户端的socket连接到服务端时触发，简洁的写法是通过net.createServer()的最后一个参数传递那个回调函数。
 ###Event:'error'
-
+当服务器发生异常时触发，如监听一个已经在使用中的端口，会发生异常，如果不侦听error事件，整个服务器将抛出异常。
 ###Event:'listening'
