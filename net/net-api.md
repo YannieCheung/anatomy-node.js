@@ -8,4 +8,10 @@
 const net = require('net');
 ```
 ##IPC Support
-`net`模块支持[IPC](./../process/IPC principle.md)(进程间通信)
+`net`模块支持[IPC](./../process/IPC principle.md)(进程间通信)，在windows上是依靠`named pipes`实现，在*nix上是依靠`domain sockets`实现。
+
+###为IPC连接标识路径
+[]()，[]()，[]()，和[]()这些方法使用`path`参数识别IPC端口。
+
+###Class:net.Server
+这个类可以用于创建一个TCP或IPC服务
