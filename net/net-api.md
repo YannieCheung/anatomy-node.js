@@ -16,3 +16,9 @@ const net = require('net');
 ##Class:net.Server
 这个类可以用于创建一个TCP或IPC服务
 
+###new net.Server([option][,connectionListener])
+* 返回 `<net.Server>`
+参见 [`net.createServer([options][, connectionListener])`]()。
+`net.Server`是一个`EventEmitter`的实例，有如下事件:
+
+###`Event`:'close'
