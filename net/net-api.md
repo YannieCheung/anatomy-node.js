@@ -23,7 +23,7 @@ const net = require('net');
 `net.Server`是一个`EventEmitter`的实例，有如下事件:
 
 ###Event:'close'
-当服务端关闭时触发。注意如果有连接存在，直到连接结束时才会触发事件。
+当服务器关闭时触发，在调用server.close()后，服务器将停止接受新的socket连接，但保持当前存在的连接，等所有连接断开后，会触发该事件。
 ###Event:'connection'
 ###Event:'error'
 ###Event:'listening'
