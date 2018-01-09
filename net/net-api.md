@@ -72,6 +72,8 @@ _如果服务器还没打开就关闭，那么该回调将直接被调用。_
 * [`server.listen(path[, backlog][, callback])`]() 针对IPC
 * [`server.listen([port][, host][, backlog][, callback])`]() 针对TCP
 
+异步方法，绑定socket到网卡时，触发`listening`事件，执行`callback`回调。
+
 
 
 
