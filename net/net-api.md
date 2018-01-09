@@ -31,3 +31,19 @@ const net = require('net');
 
 还有不同于[`net.Socket`]()的`close`事件，`close`不会被自动触发，除非手动调用[` server.close()`]()方法。参见[`server.listen()`]()中的例子。
 ###Event:'listening'
+在调用[`server.listen()`]()方法绑定端口或者`Domain Socket`后触发，简介的写法为[`server.listen(port,listeningListener)`]()，通过第二个参数传入。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
