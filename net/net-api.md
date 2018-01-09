@@ -96,6 +96,20 @@ server.on('error', (e) => {
 });
 ```
 
+###server.listen(handle[, backlog][, callback])
+一个`handle`已经被绑定到一个端口，或`domain socket`，或`named pipe`上，那么一个服务可以基于这个`handle`监听连接。
+_`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层含有`_handle`成员的对象)或一个具有有效文件描述符(`fd`)的对象_
+
+注意:windows上不支持监听一个文件描述符。
+
+
+
+
+
+
+
+
+
 
 
 
