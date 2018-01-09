@@ -50,7 +50,7 @@ server.listen(() => {
     console.log('opened server on', server.address());
 });
 ```
-当`listening`触发时才调用`server.address()`。
+当`listening`事件触发时才调用`server.address()`。
 
 
 
