@@ -45,7 +45,7 @@ const server = net.createServer((socket) => {
     throw err;
 });
 
-// grab an arbitrary unused port.
+// 分配任意一个未使用的端口
 server.listen(() => {
     console.log('opened server on', server.address());
 });
