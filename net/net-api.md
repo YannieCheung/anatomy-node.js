@@ -53,6 +53,7 @@ server.listen(() => {
 当`listening`事件触发时才调用`server.address()`。
 
 
+###server.close([callback])
 
 
 
