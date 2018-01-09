@@ -25,5 +25,6 @@ const net = require('net');
 ###Event:'close'
 当服务器关闭时触发，在调用server.close()后，服务器将停止接受新的socket连接，但保持当前存在的连接，等所有连接断开后，会触发该事件。
 ###Event:'connection'
+当客户端的socket连接到服务端时触发，简洁的写法是通过net.createServer()的最后一个参数传递那个回调函数。
 ###Event:'error'
 ###Event:'listening'
