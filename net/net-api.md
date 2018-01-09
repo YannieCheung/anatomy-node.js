@@ -83,7 +83,7 @@ _如果服务器还没打开就关闭，那么该回调将直接被调用。_
 
 * `server.listen()`方法会被调用多次，随后每次调用将使用提供的参数重新打开服务。
 
-当侦听时时可能会发生一个错误，`EADDRINUSE`。当一个工作进程已经占用了该端口(`port`/`path`/`handle`)时会发该错误。一种解决办法是过一段时间重试:
+当侦听时可能会发生一个错误，`EADDRINUSE`。当一个工作进程已经占用了该端口(`port`/`path`/`handle`)时会发该错误。一种解决办法是过一段时间重试:
 ```javascript
 server.on('error', (e) => {
   if (e.code === 'EADDRINUSE') {
