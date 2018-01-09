@@ -18,7 +18,12 @@ const net = require('net');
 
 ###new net.Server([option][,connectionListener])
 * 返回 `<net.Server>`
+
 参见 [`net.createServer([options][, connectionListener])`]()。
 `net.Server`是一个`EventEmitter`的实例，有如下事件:
 
-###`Event`:'close'
+###Event:'close'
+当服务端关闭时触发。注意如果有连接存在，直到连接结束时才会触发事件。
+###Event:'connection'
+###Event:'error'
+###Event:'listening'
