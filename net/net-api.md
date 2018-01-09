@@ -108,7 +108,7 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
   - host
   - path
   - backlog
-  - exclusive
+  - exclusive ~~集群相关~~
 * 返回 `<net.Server>`
 
 如果没有指定`option`，会抛出错误。
