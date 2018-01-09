@@ -67,6 +67,67 @@ _如果服务器还没打开就关闭，那么该回调将直接被调用。_
 ###server.listen()
 为服务器侦听连接。服务端可以是TCP或IPC，取决于侦听的内容。
 可以是以下签名。
+* [`server.listen(handle[, backlog][, callback])`]()
+* [`server.listen(options[, callback])`]()
+* [`server.listen(path[, backlog][, callback])`]() 针对IPC
+* [`server.listen([port][, host][, backlog][, callback])`]() 针对TCP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
