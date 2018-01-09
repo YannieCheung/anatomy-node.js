@@ -110,6 +110,85 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
   - backlog
   - exclusive
 * 返回 `<net.Server>`
+如果没有指定`option`，会抛出错误。
+如果指定`port`，等价于[`server.listen([port][, hostname][, backlog][, callback])`]()
+如果指定`path`，等价于[`server.listen(path[, backlog][, callback])`]()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
