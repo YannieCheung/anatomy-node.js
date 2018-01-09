@@ -13,5 +13,6 @@ const net = require('net');
 ###为IPC连接标识路径
 []()，[]()，[]()，和[]()这些方法使用`path`参数识别IPC端口。
 
-###Class:net.Server
+##Class:net.Server
 这个类可以用于创建一个TCP或IPC服务
+
