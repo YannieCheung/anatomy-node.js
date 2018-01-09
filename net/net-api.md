@@ -61,7 +61,8 @@ _如果服务器还没打开就关闭，那么该回调将直接被调用。_
 
 ###server.getConnections(callback)
 * 返回 `<net.Server>`
-
+异步方法，获取服务端上的并发连接数。当socket被发送给子进程时也可以使用
+`callback`有两个参数`err`和`count`，`count`即连接数。
 
 
 
