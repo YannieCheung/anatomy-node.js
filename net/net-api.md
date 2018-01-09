@@ -102,7 +102,14 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 
 注意:windows上不支持监听一个文件描述符。
 
-
+###server.listen(options[, callback])
+* option 必须。支持以下属性:
+  - port
+  - host
+  - path
+  - backlog
+  - exclusive
+* 返回 `<net.Server>`
 
 
 
