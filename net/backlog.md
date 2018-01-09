@@ -11,3 +11,35 @@ TCP建立连接是要进行三次握手，但是否完成三次握手后，服�
 SYN queue 队列长度由 `/proc/sys/net/ipv4/tcp_max_syn_backlog` 指定，默认为2048。
 
 Accept queue 队列长度由 `/proc/sys/net/core/somaxconn` 和使用`listen()`函数时传入的参数，二者取最小值。默认为128。在Linux内核2.4.25之前，是写死在代码常量`SOMAXCONN` ，在Linux内核2.4.25之后，在配置文件`/proc/sys/net/core/somaxconn` 中直接修改，或者在 `/etc/sysctl.conf` 中配置 `net.core.somaxconn = 128`。
+
+![](/assets/backlog.png)
+
+可以通过ss命令来显示
+
+```
+[root@localhost ~]# ss -l
+State       Recv-Q Send-Q                                     Local Address:Port                                         Peer Address:Port     
+LISTEN      0      128                                                    *:http                                                    *:*       
+LISTEN      0      128                                                   :::ssh                                                    :::*       
+LISTEN      0      128                                                    *:ssh                                                     *:*       
+LISTEN      0      100                                                  ::1:smtp                                                   :::*       
+LISTEN      0      100                                            127.0.0.1:smtp                                                    *:*       
+```
+在LISTEN状态，其中 Send-Q 即为Accept queue的最大值，Recv-Q 则表示Accept queue中等待被服务器accept()。
+
+　　另外客户端connect()返回不代表TCP连接建立成功，有可能此时accept queue 已满，系统会直接丢弃后续ACK请求；客户端误以为连接已建立，开始调用等待至超时；服务器则等待ACK超时，会重传SYN+ACK 给客户端，重传次数受限 `net.ipv4.tcp_synack_retries` ，默认为5，表示重发5次，每次等待30~40秒，即半连接默认时间大约为180秒，该参数可以在tcp被洪水攻击是临时启用这个参数。
+
+查看SYN queue 溢出
+```
+[root@localhost ~]# netstat -s | grep LISTEN
+102324 SYNs to LISTEN sockets dropped
+```
+
+查看Accept queue 溢出
+```
+[root@localhost ~]# netstat -s | grep TCPBacklogDrop
+TCPBacklogDrop: 2334
+```
+
+> https://www.cnblogs.com/Orgliny/p/5780796.html
+
