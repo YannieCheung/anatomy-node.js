@@ -35,8 +35,22 @@ const net = require('net');
 
 
 ###sever.address()
+返回服务端的监听端口，IP版本和IP地址，如`{ port: 12346, family: 'IPv4', address: '127.0.0.1' }`。
+```javascript
+var net = require('net');
+const server = net.createServer((socket) => {
+    socket.end('goodbye\n');
+}).on('error', (err) => {
+    // handle errors here
+    throw err;
+});
 
-
+// grab an arbitrary unused port.
+server.listen(() => {
+    console.log('opened server on', server.address());
+});
+```
+当`listening`触发时才调用`server.address()`。
 
 
 
