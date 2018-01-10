@@ -187,10 +187,12 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 返回`socket`绑定的地址 如:`{port: 12346, family: 'IPv4', address: '127.0.0.1'}`
 ###socket.bufferSize
 
-###socket.destroy([exception])
+###socket.destroy([exception])、socket.destroyed
 使用这个方法直接关闭连接，要确保在此条socket上已经没有I/O活动了(比如客户端定时发送心跳包，现已超时)，可以在有错误的情况下有必要使用它(解析错误等等)。
 
 如果指定了`exception`，那么当`error`事件被触发时，其侦听器会接受这个`exception`作为参数。
+
+`socket.destroyed`返回连接是否完全关闭
 
 ###socket.end([data][,encoding])
 该方法封装TCP的半关闭功能，即服务端发送一个FIN包给客户端，关闭客户端到服务端的这条连接通道，但是服务端到客户端的连接还可以继续发送数据，等数据发送完毕再关闭。
