@@ -148,6 +148,8 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 `net.Socket`可以被用户创建并用来直接和服务端交互，例如，[`net.createConnection()`]()返回`net.Socket`的一个对象，用户用它与服务端交互。它也可以由Node.js自己产生，在收到连接时可以传递给用户。例如，[`connection`]()事件被触发时，`net.Socket`会传递给其侦听器，以便用它与客户端交互。
 
 ###new net.Socket([options])
+创建一个socket对象。
+新创建的socket可以是TCP socket也可以是IPC端点，由[`socket.connect()`]()决定。
 
 
 
