@@ -115,9 +115,13 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 如果指定`port`，等价于[`server.listen([port][, hostname][, backlog][, callback])`]()
 如果指定`path`，等价于[`server.listen(path[, backlog][, callback])`]()
 
+###server.listen(path[, backlog][, callback])
+* path `<String>` 被侦听服务端路径，参见[`Identifying paths for IPC connections`]()
+在给定`path`上开启IPC服务侦听。
 
-
-
+###server.listen([port][, host][, backlog][, callback])
+在给定的端口与主机上开启TCP服务侦听。
+如果
 
 
 
