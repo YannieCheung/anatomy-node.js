@@ -170,13 +170,25 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 当socket接收到数据时触发。参数`data`是一个`Buffer`或`String`。用`socket.setEncoding()`方法设置data的编码。(参见 [Readable Stream]())。
 注意如果没有为`Socket`指定一个`data`事件，数据将被丢失。
 ###Event 'drain'
-~~_当写入缓冲区变空时触发，可以用来限制上传
-参见[`socket.write()`]()的返回值_~~
+使用`socket.write()`把数据写入内存，再从内存刷新到系统的缓冲区，接着传输数据。
+当写入的缓冲区为空时，触发该事件，可以用来做限制传输的操作。
+参见[`socket.write()`]()
 ###Event 'end'
+当连接中的任意一端发送FIN数据时触发该事件
+###Event 'error'
+当异常发生时，触发该事件
+###Event 'lookup'
+在解析主机后连接之前触发。不可用于UNIX
+###Event 'timeout'
+当一定时间后连接不再活跃时，该事件将被触发，通知用户当前该连接已经被闲置。
+###socket.address()
+返回`socket`绑定的地址 如:`{port: 12346, family: 'IPv4', address: '127.0.0.1'}`
+###socket.bufferSize
 
-###Event ''
+###socket.write(data[, encoding][, callback])
+通过socket发送数据。第二个参数指定数据编码，默认utf8。
 
-
+如果所有数据都被刷新到内核的缓冲区中，该方法返回true。 如果有数据还停留在用户的内存中，返回true。当缓冲区被释放时触发`drain`事件。
 
 
 
