@@ -187,16 +187,21 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 
 ###socket.setTimeout(timeout[, callback])
 * 返回 `<net.Socket>`
-设置`socket`延时`timeout`毫秒再执行，默认情况下`socket`不会延时。
-当设置的延迟时间到达时，`socket`上会触发`timeout`事件，但是连接不会断开。只有用户控制调用`socket.end()`或`socket.destroy()`断开连接。
+设置`socket`延时`timeout`毫秒再对连接做响应，默认情况下`socket`不会延时。
+定时器触发后，`socket`上会触发`timeout`事件，但是连接不会断开。需要用户手动调用`socket.end()`或`socket.destroy()`断开连接。
 ```javascript
-socket.setTimeout(3000);
-socket.on('timeout', () => {
-  console.log('socket timeout');
-  socket.end();
+socket.setTimeout(3000,function(){
+    console.log('timeout callback...');
 });
+socket.on('timeout', () => {
+    console.log('timeout event callback...');
+    socket.end('client disconnect...');
+});
+//print:
+//timeout callback...
+//timeout event callback...
 ```
-`callback`将在`timeout`事件触发时执行一次。
+`callback`将在`timeout`事件触发时执行一次。优先于`timeout`的侦听器执行。
 
 ###socket.write(data[, encoding][, callback])
 通过socket发送数据。第二个参数指定数据编码，默认utf8。
