@@ -188,9 +188,13 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 
 
 ###socket.setKeepAlive([enable][, initialDelay])
+* 返回 `<net.Socket>`
+
 
 
 ###socket.setNoDelay([noDelay])
+* 返回 `<net.Socket>`
+
 该API主要涉及的是关于网络传输的一个算法--Nagle algorithm. 该算法主要针对的是网络传输时资源节省的算法。 有时候，当你在发送数据包的时候，有时候传输的数据很小，就几个b，老子TCP都比你大不止10倍(通常一个TCP大小是40 byt)。所以为了针对这样的数据包，使用Nagle 可以将小包 缓存起来，等到下一次 打包来的时候，一起发送过去。 but!!! 我们得想想这个算法出来的背景，那时候我们还在使用核桃机，用的是2G网。 能节约1b 是1b 啊，针对那时候 这个算法，是极其有价值的。 but now, 我觉得应该被淘汰了，因为现在4G 已经风靡， 我已经不想再放那张洗脑的2G,3G,4G图了。 大家可以自行脑补。 不过，系统是默认开启的，所以，这样造成的后果是，信息的延迟过大。当今，推荐是关闭该算法，在nodeJS中可以使用setNoDelay(true) 来实现
 ```javascript
 const server = net.createServer(function(socket) { 
