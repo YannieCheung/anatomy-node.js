@@ -132,8 +132,15 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 设置服务端最大连接数量，当到达该值时，服务器将拒绝连接。
 如果socket已经被发送给子进程(`child_process.fork()`)，那么最好是不要用这个选项
 
+###server.unref()
+* 返回 `<net.Server>`
 
+如果`server`是在事件系统中唯一激活的服务端，那么调用`unref()`方法将退出程序。如果`server`已经执行过`unref()`方法，再次调用`unref()`将不会有效果
 
+###server.ref()
+* 返回 `<net.Server>`
+
+与`unref()`相反，在被`unref()`的`server`上调用`ref()`，那么程序会加如事件系统。连续的调用`ref()`也不会有效果。
 
 
 
