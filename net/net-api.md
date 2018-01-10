@@ -129,6 +129,8 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 一个布尔值，指示服务器是否正在侦听连接。
 
 ###server.maxConnections
+设置服务端最大连接数量，当到达该值时，服务器将拒绝连接。
+如果socket已经被发送给子进程(`child_process.fork()`)，那么最好是不要用这个选项
 
 
 
