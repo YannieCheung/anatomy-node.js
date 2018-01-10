@@ -186,7 +186,7 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 ###socket.address()
 返回`socket`绑定的地址 如:`{port: 12346, family: 'IPv4', address: '127.0.0.1'}`
 ###socket.bufferSize
-当前准备写入缓冲区的字符数，用户可根据此属性对数据流进行控制。遇到很大或增长很快的`bufferSize `时，用户可用尝试用`pause()` 和 `resume()`来控制字符流。
+~~**当前准备写入缓冲区的字符数，用户可根据此属性对数据流进行控制。遇到很大或增长很快的`bufferSize `时，用户可用尝试用`pause()` 和 `resume()`来控制字符流。**~~
 
 ###socket.destroy([exception])、socket.destroyed
 使用这个方法直接关闭连接，要确保在此条socket上已经没有I/O活动了(比如客户端定时发送心跳包，现已超时)，可以在有错误的情况下有必要使用它(解析错误等等)。
