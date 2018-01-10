@@ -328,9 +328,8 @@ socket.on('timeout', () => {
 
 ##net.createConnection(options[, connectListener])
 对于`option`，参见[new net.Socket([options])]()和[socket.connect(options[, connectListener])]()方法。
-
-
-
+还有个此方法附加的`option`
+* timeout `<number>` 如果设置该参数，那么在`socket`被创建之后，连接开启之前，会先调用[`socket.setTimeout(timeout)`]()。
 
 
 
