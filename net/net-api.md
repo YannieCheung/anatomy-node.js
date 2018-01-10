@@ -156,6 +156,166 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 * writable `<boolean>` 当`fd`被设置时允许socket进行写操作 默认false
 * allowHalfOpen 该属性值被指定为false时，当TCP服务器接收到客户端发送的一个FIN包时将会回发一个FIN包，当该属性被设置true时，当TCP服务器接收到客户端发送的一个FIN包时不会发FIN包，这使得TCP服务器可以继续向客户端发送数据，但是不会接收客户端发送的数据。开发者必须调用`end`方法来关闭socket连接。该属性的默认值为false。
 
+###Event 'close'
+事件监听器参数:
+* had_error `<boolean>` 如果socket有传输错误，则值为true
+
+一旦socket完全关闭触发该事件。
+
+###Event 'connect'
+当socket连接建立成功时触发，具体参见[`net.createConnection()`]()
+###Event 'data'
+监听器参数
+* data `<Buffer>`
+当socket接收到数据时触发。参数`data`是一个`Buffer`或`String`。用`socket.setEncoding()`方法设置data的编码。(参见 [Readable Stream]())。
+注意如果没有为`Socket`指定一个`data`事件，数据将被丢失。
+###Event ''
+###Event ''
+###Event ''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
