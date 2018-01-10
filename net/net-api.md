@@ -169,7 +169,8 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 * data `<Buffer>`
 当socket接收到数据时触发。参数`data`是一个`Buffer`或`String`。用`socket.setEncoding()`方法设置data的编码。(参见 [Readable Stream]())。
 注意如果没有为`Socket`指定一个`data`事件，数据将被丢失。
-###Event ''
+###Event 'drain'
+
 ###Event ''
 ###Event ''
 
