@@ -194,7 +194,25 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 这是个异步方法，一旦连接被建立，`connect`事件被触发，如果连接有问题，一个`error`事件被触发，错误将传递给`error`事件的监听函数并执行该回调。如果没有问题，那么最后个参数`connectListener`回调将在`connect`事件触发时执行
 
 ####socket.connect(options[, connectListener])
+为`socket`开启一个连接，通常不会去使用此方法，而是应该通过[`net.createConnection()`]()方法创建和开启一个`socket`。
+只有当实现一个自定义`socket`时才使用此方法
 
+对于TCP连接，可用的`option`有以下几种:
+* port `<number>` 必选，socket连接端口
+* host `<string>` socket连接地址，默认`'localhost'`
+* localAddress `<string>` 连接的发起地址
+* loaclPort `<number>` 连接的发起端口
+* family `<number>` IP版本，4或6， 默认4
+_~~*** hints `<number>`
+* lookup `<Function>`**~~_
+
+对于IPC连接，可用的`option`有
+**_~~* path `<string>` 必选，客户端连接的路径。~~_**
+
+####socket.connect(path[, connectListener])
+
+
+####socket.connect(port[, host][, connectListener])
 
 
 ###socket.address()
