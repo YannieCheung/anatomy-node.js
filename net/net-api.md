@@ -326,6 +326,7 @@ socket.on('timeout', () => {
 `callback`回调会在数据完全写入时调用，可能不会立刻执行。
 
 
+##net.createConnection(options[, connectListener])
 
 
 
