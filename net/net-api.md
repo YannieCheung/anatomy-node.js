@@ -195,6 +195,9 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 ###socket.remotePort、remoteFamily、remoteAddress
 返回连接彼端socket的端口、ip版本和地址。
 
+###socket.localPort、localAddress
+返回连接此端的端口和地址。
+
 ###socket.pause() 、socket.resume()
 `pause()`方法使程序停止读取数据，接收到数据，`data`事件也不会触发，`resume()`则重启数据读取功能，触发`data`事件，这有助于节省网络传输的开销。
 ```javascript
