@@ -150,7 +150,11 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 ###new net.Socket([options])
 创建一个socket对象。
 新创建的socket可以是TCP socket也可以是IPC端点，由[`socket.connect()`]()决定。
-
+`option`可以有以下属性
+* fd 用于指定一个存在的socket的文件描述符，TCP客户端使用这个socket与服务端相连接
+* readale `<boolean>` 当`fd`被设置时允许socket进行读操作 默认false
+* writable `<boolean>` 当`fd`被设置时允许socket进行写操作 默认false
+* allowHalfOpen 该属性值被指定为false时，当TCP服务器接收到客户端发送的一个FIN包时将会回发一个FIN包，当该属性被设置true时，当TCP服务器接收到客户端发送的一个FIN包时不会发FIN包，这使得TCP服务器可以继续向客户端发送数据，但是不会接收客户端发送的数据。开发者必须调用`end`方法来关闭socket连接。该属性的默认值为false。
 
 
 
