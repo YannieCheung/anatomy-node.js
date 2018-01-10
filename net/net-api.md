@@ -192,6 +192,34 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 
 设置数据编码，`socket`本身也是个[`Readable Stream`]()
 
+###socket.pause() 、socket.resume()
+`pause()`方法使程序停止读取数据，接收到数据，`data`事件也不会触发，`resume()`则重启数据读取功能，触发`data`事件，这有助于节省网络传输的开销。
+```javascript
+//server.js
+...
+console.log('客户端与服务器端连接已经建立。');
+socket.setEncoding('utf8');
+socket.pause();
+setTimeout(function(){
+    socket.resume();
+},5000);
+socket.on('data',function(data){
+    console.log('已经接收客户端发送的数据: '  + data);
+    socket.write('确认数据: ' + data);
+    console.log('123');
+    socket.end();
+});
+...
+//client.js
+...
+client.connect(8431,'127.0.0.1',function(){
+    console.log('已经连接到服务器端。');
+    client.write('你好。');
+    console.log('123');
+});
+...
+```
+
 ###socket.setKeepAlive([enable][, initialDelay])
 * 返回 `<net.Socket>`
 
