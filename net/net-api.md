@@ -125,7 +125,10 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 如果`host`没有指定，则当IPv6可用时，服务器用IPv6地址接收连接，否则将接收IPv4地址的连接。
 注意：对于大多数操作系统，侦听IPv6(::)的地址可能会引起`net.Server`也侦听IPv4(0.0.0.0)的地址
 
+###server.listening
+一个布尔值，指示服务器是否正在侦听连接。
 
+###server.maxConnections
 
 
 
