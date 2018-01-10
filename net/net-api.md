@@ -185,6 +185,10 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 返回`socket`绑定的地址 如:`{port: 12346, family: 'IPv4', address: '127.0.0.1'}`
 ###socket.bufferSize
 
+###socket.setTimeout(timeout[, callback])
+* 返回 `<net.Socket>`
+
+
 ###socket.write(data[, encoding][, callback])
 通过socket发送数据。第二个参数指定数据编码，默认utf8。
 
