@@ -121,7 +121,9 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 
 ###server.listen([port][, host][, backlog][, callback])
 在给定的端口与主机上开启TCP服务侦听。
-如果
+如果没有指定`port`或指定为0，操作系统将任意分配一个未使用的端口，在`listening`事件触发后可用`server.address().port`检索该端口。
+如果`host`没有指定，则当IPv6可用时，服务器用IPv6地址接收连接，否则将接收IPv4地址的连接。
+注意：对于大多数操作系统，侦听IPv6(::)的地址可能会引起`net.Server`也侦听IPv4(0.0.0.0)的地址
 
 
 
