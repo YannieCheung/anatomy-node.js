@@ -187,6 +187,10 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 返回`socket`绑定的地址 如:`{port: 12346, family: 'IPv4', address: '127.0.0.1'}`
 ###socket.bufferSize
 
+###socket.setEncoding([encoding])
+* 返回 `<net.Socket>`
+
+设置数据编码，`socket`本身也是个[`Readable Stream`]()
 
 ###socket.setKeepAlive([enable][, initialDelay])
 * 返回 `<net.Socket>`
