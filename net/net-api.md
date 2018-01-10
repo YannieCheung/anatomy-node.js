@@ -203,6 +203,9 @@ socket.write(data,encoding);
 socket.end();
 ```
 
+###socket.bytesWritten
+发送的总字节数。
+
 ###socket.setEncoding([encoding])
 * 返回 `<net.Socket>`
 
