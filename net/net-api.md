@@ -327,6 +327,7 @@ socket.on('timeout', () => {
 
 
 ##net.createConnection(options[, connectListener])
+对于`option`，参见[new net.Socket([options])]()和[socket.connect(options[, connectListener])]()方法。
 
 
 
