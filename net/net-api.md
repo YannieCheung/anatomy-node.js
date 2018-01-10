@@ -183,6 +183,20 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 ###Event 'timeout'
 与`setTimeout()`方法对应，用于在一段时间socket不活动了，触发`timeout`事件，在事件回调用户需要手动关闭该连接。
 参见[socket.setTimeout()]()
+
+###socket.connect()
+根据给定的socket初始化一个连接。
+* [socket.connect(options[, connectListener])]()
+* [socket.connect(path[, connectListener])]() for IPC connections.
+* [socket.connect(port[, host][, connectListener])]() for TCP connections.
+* 返回: `<net.Socket>` 
+
+这是个异步方法，一旦连接被建立，`connect`事件被触发，如果连接有问题，一个`error`事件被触发，错误将传递给`error`事件的监听函数并执行该回调。如果没有问题，那么最后个参数`connectListener`回调将在`connect`事件触发时执行
+
+####socket.connect(options[, connectListener])
+
+
+
 ###socket.address()
 返回`socket`绑定的地址 如:`{port: 12346, family: 'IPv4', address: '127.0.0.1'}`
 ###socket.bufferSize
