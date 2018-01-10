@@ -187,6 +187,16 @@ _`handle`对象可以是一个`net.Server`，一个`net.Socket`(任何在底层�
 返回`socket`绑定的地址 如:`{port: 12346, family: 'IPv4', address: '127.0.0.1'}`
 ###socket.bufferSize
 
+
+###socket.end([data][,encoding])
+该方法封装TCP的半关闭功能，即服务端发送一个FIN包给客户端，关闭客户端到服务端的这条连接通道，但是服务端到客户端的连接还可以继续发送数据，等数据发送完毕再关闭。
+```javascript
+socket.end(data,encoding);
+//等价于
+socket.write(data,encoding);
+socket.end();
+```
+
 ###socket.setEncoding([encoding])
 * 返回 `<net.Socket>`
 
