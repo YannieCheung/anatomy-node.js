@@ -203,8 +203,8 @@ socket.write(data,encoding);
 socket.end();
 ```
 
-###socket.bytesWritten
-发送的总字节数。
+###socket.bytesWritten、socket.bytesRead
+发送的总字节数，和接收到的总字节数(注意`bytesRead`要在`data`事件的回调中调用才有用，之前还没接收时是0字节)。
 
 ###socket.setEncoding([encoding])
 * 返回 `<net.Socket>`
