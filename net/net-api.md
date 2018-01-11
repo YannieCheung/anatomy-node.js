@@ -331,7 +331,48 @@ socket.on('timeout', () => {
 还有个此方法附加的`option`
 * timeout `<number>` 如果设置该参数，那么在`socket`被创建之后，连接开启之前，会先调用[`socket.setTimeout(timeout)`]()。
 
+##net.createServer([options][, connectionListener])
 
+默认的`allowHalfOpen`为`false`,即当TCP服务器接收到客户端发送的一个FIN包时会回发一个FIN包，两边的通道完全关闭。而当该属性设置为`true`时，当服务端收到客户端的FIN包时不会回发FIN包，这就使得TCP服务端可以继续向客户端发送数据，但是不会接受客户端发送的数据，开发者必须调用
+`socket.end()`来关闭该socket连接。
+
+`pauseOnConnect`如果设置为`true`，那么与连接到来相关联的socket将被暂停。这就允许初始进程不读取数据的情况下，让连接在进程间传递。要重新开始从暂停的socket上读取数据，可以调用`socket.resume()`方法
+
+该`server`根据`server.listen()`的目标而确定是一个TCP还是IPC服务端。
+
+下面是一个TCP回显服务端的例子，侦听端口8124：
+```javascript
+const net = require('net');
+const server = net.createServer((c) => {
+    // 'connection' listener
+    console.log('client connected');
+    c.on('end', () => {
+        console.log('client disconnected');
+    });
+    c.write('hello\r\n');
+    c.pipe(c);
+});
+server.on('error', (err) => {
+    throw err;
+});
+server.listen(8124, () => {
+    console.log('server bound');
+});
+```
+使用`telnet`测试
+```
+$ telnet localhost 8124
+```
+若要使用基于*nix的`domain socket`ipc，监听socket文件`/tmp/echo.sock`，对以上稍作修改
+```javascript 
+server.listen('/tmp/echo.sock', () => {
+    console.log('server bound');
+});
+```
+使用`nc`连接到UNIX`domain socket`服务
+```
+$ nc -U /tmp/echo.sock
+```
 
 
 
